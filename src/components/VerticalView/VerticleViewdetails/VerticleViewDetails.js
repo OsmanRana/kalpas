@@ -13,7 +13,7 @@ const VerticleViewDetails = ({ post }) => {
     <div>
       <Modal />
       {display && (
-        <div className="card p-3 my-3">
+        <div className="card p-3 my-3 border-0 shadow-lg p-3 rounded-3">
           <FaTimes
             onClick={() => handleRemoveItem()}
             style={{
