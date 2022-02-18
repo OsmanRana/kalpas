@@ -4,18 +4,17 @@ import Modal from "./Modal/Modal";
 
 const HorizontalViewDetails = ({ post }) => {
   const [display, setDisplay] = useState(true);
-  const { id, title, body } = post;
+  const { title, body } = post;
   const date = new Date().toDateString();
-  const handleRemoveItem = (id) => {
+  const handleRemoveItem = () => {
     setDisplay(false);
-    console.log(setDisplay(false));
   };
   return (
     <>
       {" "}
       <Modal />
       {display && (
-        <div className="d-flex align-items-center" id={id}>
+        <div className="d-flex align-items-center">
           <div
             className="card mb-3 border-0 shadow-lg p-3 rounded-3"
             data-bs-toggle="modal"
@@ -41,7 +40,7 @@ const HorizontalViewDetails = ({ post }) => {
             </div>
           </div>
 
-          <div onClick={() => handleRemoveItem(id)}>
+          <div onClick={() => handleRemoveItem()}>
             <FaTimes
               className="shadow p-2 ms-3"
               style={{
@@ -49,6 +48,7 @@ const HorizontalViewDetails = ({ post }) => {
                 color: "#fc8e8f",
                 backgroundColor: "white",
                 borderRadius: "50%",
+                cursor: "pointer"
               }}
             />
           </div>

@@ -2,9 +2,9 @@ import React from "react";
 import { FaListUl } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 
-const SideBar = () => {
+const SideBar = ({ handleComponentDisplay, display }) => {
   return (
-    <div className="container shadow p-5 h-100 " >
+    <div className="container shadow p-5 h-100 ">
       <div className="d-flex align-items-center shadow rounded-3 p-3 bg-white">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FuEJbKwDdaz1h387130xmYkAIQbZpahhbQ&usqp=CAU"
@@ -20,44 +20,49 @@ const SideBar = () => {
       </div>
       <div className=" shadow rounded-3 p-3 my-5 bg-white">
         <h1>View Toggle</h1>
-        <div className="p-3  mx-5 d-flex justify-content-around rounded-3">
-          <FaRegListAlt
-            style={{
-              fontSize: "100px",
-              color: "gray",
-              backgroundColor: "#dae2e9",
-              padding: "20px",
-              borderRadius: "15px",
-            }}
-          />
-          <FaListUl
-            style={{
-              fontSize: "100px",
-              backgroundColor: "#98eec8",
-              padding: "20px",
-              borderRadius: "15px",
-            }}
-          />
-        </div>
-        <div className="p-3  mx-5 d-flex justify-content-around rounded-3">
-          <FaRegListAlt
-            style={{
-              fontSize: "100px",
-              backgroundColor: "#98eec8",
-              padding: "20px",
-              borderRadius: "15px",
-            }}
-          />
-          <FaListUl
-            style={{
-              fontSize: "100px",
-              color: "gray",
-              backgroundColor: "#dae2e9",
-              padding: "20px",
-              borderRadius: "15px",
-            }}
-          />
-        </div>
+        {display ? (
+          <div className="p-3  mx-5 d-flex justify-content-around rounded-3">
+            <FaRegListAlt
+              onClick={() => handleComponentDisplay()}
+              style={{
+                fontSize: "100px",
+                color: "gray",
+                backgroundColor: "#dae2e9",
+                padding: "20px",
+                borderRadius: "15px",
+              }}
+            />
+            <FaListUl
+              style={{
+                fontSize: "100px",
+                backgroundColor: "#98eec8",
+                padding: "20px",
+                borderRadius: "15px",
+              }}
+            />
+          </div>
+        ) : (
+          <div className="p-3  mx-5 d-flex justify-content-around rounded-3">
+            <FaRegListAlt
+              style={{
+                fontSize: "100px",
+                backgroundColor: "#98eec8",
+                padding: "20px",
+                borderRadius: "15px",
+              }}
+            />
+            <FaListUl
+              onClick={() => handleComponentDisplay()}
+              style={{
+                fontSize: "100px",
+                color: "gray",
+                backgroundColor: "#dae2e9",
+                padding: "20px",
+                borderRadius: "15px",
+              }}
+            />
+          </div>
+        )}
       </div>
       <div className=" shadow rounded-3 p-5 bg-white">
         <h1>Have a Feedback!</h1>
