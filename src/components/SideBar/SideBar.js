@@ -30,6 +30,7 @@ const SideBar = ({ handleComponentDisplay, display }) => {
                 backgroundColor: "#dae2e9",
                 padding: "20px",
                 borderRadius: "15px",
+                cursor: "pointer",
               }}
             />
             <FaListUl
@@ -59,6 +60,7 @@ const SideBar = ({ handleComponentDisplay, display }) => {
                 backgroundColor: "#dae2e9",
                 padding: "20px",
                 borderRadius: "15px",
+                cursor: "pointer",
               }}
             />
           </div>
