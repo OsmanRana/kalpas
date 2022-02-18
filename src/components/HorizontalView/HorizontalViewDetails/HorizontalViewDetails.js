@@ -1,11 +1,11 @@
 import React from "react";
+import { FaTimes } from "react-icons/fa";
 
 const HorizontalViewDetails = ({ post }) => {
   const { title, body } = post;
   const date = new Date().toDateString();
-  console.log(date);
   return (
-    <>
+    <div className="d-flex align-items-center">
       <div className="card mb-3 border-0 shadow-lg p-3 rounded-3">
         <div className="row g-0 d-flex align-items-center">
           <div className="col-md-1 rounded-circle p-1">
@@ -26,7 +26,18 @@ const HorizontalViewDetails = ({ post }) => {
           </div>
         </div>
       </div>
-    </>
+      <div>
+        <FaTimes
+          className="shadow p-2 ms-3"
+          style={{
+            fontSize: "72px",
+            color: "#fc8e8f",
+            backgroundColor: "white",
+            borderRadius: "50%",
+          }}
+        />
+      </div>
+    </div>
   );
 };
 

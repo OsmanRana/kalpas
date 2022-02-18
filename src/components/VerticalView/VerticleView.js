@@ -1,19 +1,19 @@
 import React from "react";
 import usePosts from "../../hooks/usePosts";
-import HorizontalViewDetails from "./HorizontalViewDetails/HorizontalViewDetails";
+import VerticleViewDetails from "./VerticleViewdetails/VerticleViewDetails";
 
-const HorizontalView = () => {
+const VerticleView = () => {
   const { posts } = usePosts();
   return (
     <div className="container p-5">
       {posts?.slice(0, 5).map((post) => (
-        <HorizontalViewDetails
+        <VerticleViewDetails
           key={post.id}
           post={post}
-        ></HorizontalViewDetails>
+        ></VerticleViewDetails>
       ))}
     </div>
   );
 };
 
-export default HorizontalView;
+export default VerticleView;
