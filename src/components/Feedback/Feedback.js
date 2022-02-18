@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import validator from "validator";
 
 const Feedback = () => {
   const [countries, setCountries] = useState([]);
+  const [error, setError] = useState("");
   useEffect(() => {
     fetch(
       "https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93521e93d37/raw/f77e7598a8503f1f70528ae1cbf9f66755698a16/CountryCodes.json"
@@ -10,10 +12,20 @@ const Feedback = () => {
       .then((data) => setCountries(data));
   }, []);
 
-  // const handleOnChange = (e) => {
-  //   const searchedCountry = country.includes(e.target.value);
-  //   console.log(e.target.value);
-  // };
+  const handleEmailValidation = (e) => {
+    if (validator.isEmail(e.target.value)) {
+      setError("");
+    } else {
+      setError("Please enter a valid email.");
+    }
+  };
+  const handleMobileValidation = (e) => {
+    if (validator.isMobilePhone(e.target.value)) {
+      setError("");
+    } else {
+      setError("Please enter a valid number.");
+    }
+  };
   return (
     <div className="mb-3 text-start ms-5" style={{ maxWidth: "700px" }}>
       <div className="mb-5">
@@ -79,12 +91,14 @@ const Feedback = () => {
             Email ID:
           </label>
           <input
+            onBlur={(e) => handleEmailValidation(e)}
             type="email"
             className="form-control  border-0 shadow py-3"
             placeholder="example@sample.com"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
+          {error && <p className="my-3 text-danger">{error}</p>}
         </div>
         <div className=" mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -92,14 +106,16 @@ const Feedback = () => {
           </label>
           <div className="d-flex">
             <input
-              type="email"
+              onBlur={(e) => handleMobileValidation(e)}
+              type="number"
               className="form-control  border-0 shadow py-3 w-25 text-center me-3"
               placeholder="+91"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
             <input
-              type="email"
+              onBlur={(e) => handleEmailValidation(e)}
+              type="number"
               className="form-control  border-0 shadow py-3"
               placeholder="123456789"
               id="exampleInputEmail1"

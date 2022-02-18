@@ -19,6 +19,7 @@ const HorizontalViewDetails = ({ post }) => {
             className="card mb-3 border-0 shadow-lg p-3 rounded-3"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
+            
           >
             <div className="row g-0 d-flex align-items-center">
               <div className="col-md-1 rounded-circle p-1">
