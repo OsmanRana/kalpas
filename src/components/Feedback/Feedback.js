@@ -3,7 +3,8 @@ import validator from "validator";
 
 const Feedback = () => {
   const [countries, setCountries] = useState([]);
-  const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   useEffect(() => {
     fetch(
       "https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93521e93d37/raw/f77e7598a8503f1f70528ae1cbf9f66755698a16/CountryCodes.json"
@@ -14,17 +15,21 @@ const Feedback = () => {
 
   const handleEmailValidation = (e) => {
     if (validator.isEmail(e.target.value)) {
-      setError("");
+      setEmailError("");
     } else {
-      setError("Please enter a valid email.");
+      setEmailError("Please enter a valid email.");
     }
   };
   const handleMobileValidation = (e) => {
     if (validator.isMobilePhone(e.target.value)) {
-      setError("");
+      setPhoneError("");
     } else {
-      setError("Please enter a valid number.");
+      setPhoneError("Please enter a valid number.");
     }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Thank you for the feedback!");
   };
   return (
     <div className="mb-3 text-start ms-5" style={{ maxWidth: "700px" }}>
@@ -34,40 +39,40 @@ const Feedback = () => {
       </div>
       <form>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="firstName" className="form-label">
             First Name:
           </label>
           <input
             type="name"
             className="form-control  border-0 shadow py-3"
             placeholder="John"
-            id="exampleInputEmail1"
+            id="firstName"
             aria-describedby="emailHelp"
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="lastName" className="form-label">
             Last Name:
           </label>
           <input
-            type="email"
+            type="name"
             className="form-control  border-0 shadow py-3"
             placeholder="Doe"
-            id="exampleInputEmail1"
+            id="lastName"
             aria-describedby="emailHelp"
           />
         </div>
         <div className=" mb-3">
-          <label htmlFor="exampleInputEmail1">Comments</label>
+          <label htmlFor="comments">Comments</label>
           <textarea
             className="form-control  border-0 shadow"
             placeholder="Enter your full Postal address"
-            id="exampleInputEmail1"
+            id="comments"
             style={{ height: "100px" }}
           ></textarea>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="country" className="form-label">
             Country:
           </label>
           <input
@@ -87,7 +92,7 @@ const Feedback = () => {
           ))}
         </datalist>
         <div className=" mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="emailId" className="form-label">
             Email ID:
           </label>
           <input
@@ -95,13 +100,13 @@ const Feedback = () => {
             type="email"
             className="form-control  border-0 shadow py-3"
             placeholder="example@sample.com"
-            id="exampleInputEmail1"
+            id="emailId"
             aria-describedby="emailHelp"
           />
-          {error && <p className="my-3 text-danger">{error}</p>}
+          {emailError && <p className="my-3 text-danger">{emailError}</p>}
         </div>
         <div className=" mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="phoneNumber" className="form-label">
             Phone Number:
           </label>
           <div className="d-flex">
@@ -110,7 +115,7 @@ const Feedback = () => {
               type="number"
               className="form-control  border-0 shadow py-3 w-25 text-center me-3"
               placeholder="+91"
-              id="exampleInputEmail1"
+              id="phoneNumber1"
               aria-describedby="emailHelp"
             />
             <input
@@ -118,15 +123,17 @@ const Feedback = () => {
               type="number"
               className="form-control  border-0 shadow py-3"
               placeholder="123456789"
-              id="exampleInputEmail1"
+              id="phoneNumber2"
               aria-describedby="emailHelp"
             />
           </div>
+          {phoneError && <p className="my-3 text-danger">{phoneError}</p>}
         </div>
         <button
           type="submit"
           className="btn btn-primary border-0 px-5 py-3 fw-bold fs-3 my-5"
           style={{ backgroundColor: "#98eec8" }}
+          onClick={(e) => handleSubmit(e)}
         >
           Submit Feedback
         </button>
